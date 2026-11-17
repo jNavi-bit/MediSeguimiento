@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_hero_full">
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/paginas"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Barra superior -->
+    <LinearLayout
+        android:id="@+id/barra_superior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/screen_gutter"
+        android:paddingTop="@dimen/space_m"
+        android:paddingEnd="@dimen/space_s">
+
+        <FrameLayout
+            android:id="@+id/logo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_glass"
+            android:transitionName="logo">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                android:src="@drawable/ic_logo" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_m"
+            android:layout_weight="1"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.Medi.Title"
+            android:textColor="@color/hero_on" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_omitir"
+            style="@style/Widget.Medi.Button.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/touch_min"
+            android:text="@string/omitir"
+            android:textColor="@color/hero_on"
+            app:rippleColor="@color/hero_glass_stroke" />
+    </LinearLayout>
+
+    <!-- Controles inferiores -->
+    <LinearLayout
+        android:id="@+id/panel_inferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/screen_gutter"
+        android:paddingBottom="@dimen/space_l">
+
+        <LinearLayout
+            android:id="@+id/indicadores"
+            android:layout_width="wrap_content"
+            android:layout_height="8dp"
+            android:layout_marginBottom="28dp"
+            android:orientation="horizontal" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_principal"
+            style="@style/Widget.Medi.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/white"
+            android:text="@string/siguiente"
+            android:textColor="@color/hero_start"
+            app:icon="@drawable/ic_arrow_forward"
+            app:iconGravity="textEnd"
+            app:iconPadding="8dp"
+            app:iconTint="@color/hero_start"
+            app:rippleColor="@color/md_primary_container" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_secundario"
+            style="@style/Widget.Medi.Button.Text"
+            android:layout_width="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_xs"
+            android:minHeight="52dp"
+            android:text="@string/ya_tengo_cuenta"
+            android:textColor="@color/hero_on"
+            app:rippleColor="@color/hero_glass_stroke" />
+    </LinearLayout>
+</FrameLayout>

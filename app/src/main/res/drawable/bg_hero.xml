@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Encabezado degradado con burbujas decorativas -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:angle="315" android:startColor="@color/hero_start" android:endColor="@color/hero_end" android:type="linear" />
+            <corners android:bottomLeftRadius="@dimen/radius_hero" android:bottomRightRadius="@dimen/radius_hero" />
+        </shape>
+    </item>
+    <item android:width="220dp" android:height="220dp" android:gravity="top|end" android:top="-70dp" android:right="-60dp">
+        <shape android:shape="oval"><solid android:color="@color/hero_glass" /></shape>
+    </item>
+    <item android:width="120dp" android:height="120dp" android:gravity="bottom|end" android:bottom="-30dp" android:right="70dp">
+        <shape android:shape="oval"><solid android:color="@color/hero_glass" /></shape>
+    </item>
+</layer-list>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_pill"
+    android:backgroundTint="?attr/colorSurfaceContainerLowest"
+    android:elevation="10dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:outlineAmbientShadowColor="#3306323A"
+    android:outlineSpotShadowColor="#5506323A"
+    android:paddingStart="8dp"
+    android:paddingTop="8dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp">
+
+    <FrameLayout
+        android:id="@+id/chip_insignia"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@drawable/bg_circle"
+        android:backgroundTint="?attr/colorPrimaryContainer">
+
+        <ImageView
+            android:id="@+id/chip_icono"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            app:tint="?attr/colorPrimary" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/chip_texto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textAppearance="@style/TextAppearance.Medi.Label"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="13sp" />
+</LinearLayout>

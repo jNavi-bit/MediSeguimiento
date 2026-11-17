@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/space_xl">
+
+                <!-- ===== Encabezado ===== -->
+                <LinearLayout
+                    android:id="@+id/hero"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_hero"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/screen_gutter"
+                    android:paddingTop="@dimen/space_s"
+                    android:paddingBottom="28dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/btn_volver"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_boton_glass_circulo"
+                            android:contentDescription="@string/volver"
+                            android:src="@drawable/ic_arrow_back"
+                            app:tint="@color/hero_on" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+
+                        <ImageButton
+                            android:id="@+id/btn_menu"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="@drawable/bg_boton_glass_circulo"
+                            android:contentDescription="@string/mas_opciones"
+                            android:src="@drawable/ic_more_vert"
+                            app:tint="@color/hero_on" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/estado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_l"
+                        android:background="@drawable/bg_pill"
+                        android:backgroundTint="@color/hero_glass"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp"
+                        android:textAppearance="@style/TextAppearance.Medi.Label"
+                        android:textColor="@color/hero_on"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/especialidad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_m"
+                        android:accessibilityHeading="true"
+                        android:textAppearance="@style/TextAppearance.Medi.Display"
+                        android:textColor="@color/hero_on" />
+
+                    <TextView
+                        android:id="@+id/subtitulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xs"
+                        android:textAppearance="@style/TextAppearance.Medi.Body"
+                        android:textColor="@color/hero_on_muted" />
+
+                    <!-- Fecha y hora -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xl"
+                        android:background="@drawable/bg_glass"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/space_l">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_calendar"
+                                    app:tint="@color/hero_on_muted" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
+                                    android:text="@string/campo_fecha"
+                                    android:textAppearance="@style/TextAppearance.Medi.Overline"
+                                    android:textColor="@color/hero_on_muted" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/fecha"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:textAppearance="@style/TextAppearance.Medi.Title"
+                                android:textColor="@color/hero_on" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginHorizontal="@dimen/space_l"
+                            android:background="@color/hero_glass_stroke" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:importantForAccessibility="no"
+                                    android:src="@drawable/ic_clock"
+                                    app:tint="@color/hero_on_muted" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="6dp"
+                                    android:text="@string/campo_hora"
+                                    android:textAppearance="@style/TextAppearance.Medi.Overline"
+                                    android:textColor="@color/hero_on_muted" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:id="@+id/hora"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:textAppearance="@style/TextAppearance.Medi.Title"
+                                android:textColor="@color/hero_on" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ===== Contenido ===== -->
+                <LinearLayout
+                    android:id="@+id/contenido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="@dimen/screen_gutter">
+
+                    <!-- Preparación de la consulta -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/tarjeta_prep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_xl"
+                        app:shapeAppearance="@style/Shape.Medi.Large">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="@dimen/space_l">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <FrameLayout
+                                    android:layout_width="56dp"
+                                    android:layout_height="56dp">
+
+                                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                                        android:id="@+id/prep_anillo"
+                                        android:layout_width="56dp"
+                                        android:layout_height="56dp"
+                                        android:max="5"
+                                        app:indicatorColor="?attr/colorPrimary"
+                                        app:indicatorSize="56dp"
+                                        app:trackColor="?attr/colorSurfaceContainerHigh"
+                                        app:trackCornerRadius="3dp"
+                                        app:trackThickness="6dp" />
+
+                                    <TextView
+                                        android:id="@+id/prep_numero"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:textAppearance="@style/TextAppearance.Medi.Label"
+                                        android:textColor="?attr/colorOnSurface"
+                                        android:textStyle="bold" />
+                                </FrameLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/space_l"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/prep_tarjeta_titulo"
+                                        android:textAppearance="@style/TextAppearance.Medi.Title"
+                                        android:textColor="?attr/colorOnSurface" />
+
+                                    <TextView
+                                        android:id="@+id/prep_texto"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="2dp"
+                                        android:textAppearance="@style/TextAppearance.Medi.BodySmall"
+                                        android:textColor="?attr/colorOnSurfaceVariant" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/space_l"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btn_preparar"
+                                    style="@style/Widget.Medi.Button.Tonal"
+                                    android:maxLines="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:minHeight="48dp"
+                                    android:paddingHorizontal="8dp"
+                                    app:icon="@drawable/ic_edit_note"
+                                    app:iconGravity="textStart" />
+
+                                <Space
+                                    android:layout_width="@dimen/space_m"
+                                    android:layout_height="0dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btn_resumen"
+                                    style="@style/Widget.Medi.Button.Outlined"
+                                    android:maxLines="1"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:minHeight="48dp"
+                                    android:paddingHorizontal="8dp"
+                                    android:text="@string/ver_resumen"
+                                    app:icon="@drawable/ic_summary"
+                                    app:iconGravity="textStart" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:layout_marginBottom="@dimen/space_m"
+                        android:accessibilityHeading="true"
+                        android:text="@string/detalle_seccion"
+                        android:textAppearance="@style/TextAppearance.Medi.Title"
+                        android:textColor="?attr/colorOnSurface" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:divider="@drawable/divisor_inset"
+                            android:orientation="vertical"
+                            android:showDividers="middle">
+
+                            <include android:id="@+id/fila_medico" layout="@layout/item_fila_info" />
+                            <include android:id="@+id/fila_lugar" layout="@layout/item_fila_info" />
+                            <include android:id="@+id/fila_notas" layout="@layout/item_fila_info" />
+                            <include android:id="@+id/fila_recordatorio" layout="@layout/item_fila_info" />
+
+                            <TextView
+                                android:id="@+id/sin_datos"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:padding="@dimen/space_l"
+                                android:text="@string/detalle_sin_datos"
+                                android:textAppearance="@style/TextAppearance.Medi.BodySmall"
+                                android:textColor="?attr/colorOnSurfaceVariant" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_l"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="@dimen/space_xs">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_marginTop="2dp"
+                            android:importantForAccessibility="no"
+                            android:src="@drawable/ic_info"
+                            app:tint="?attr/colorOnSurfaceVariant" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/space_s"
+                            android:layout_weight="1"
+                            android:text="@string/aviso_cita_personal"
+                            android:textAppearance="@style/TextAppearance.Medi.BodySmall"
+                            android:textColor="?attr/colorOnSurfaceVariant" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?attr/colorOutlineVariant" />
+
+        <LinearLayout
+            android:id="@+id/barra_acciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorSurfaceContainerLowest"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/screen_gutter"
+            android:paddingVertical="@dimen/space_m">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_secundario"
+                style="@style/Widget.Medi.Button.Outlined"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/space_m"
+                android:layout_weight="1"
+                android:paddingHorizontal="12dp"
+                app:iconGravity="textStart" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_principal"
+                style="@style/Widget.Medi.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.25"
+                android:paddingHorizontal="12dp"
+                app:iconGravity="textStart" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

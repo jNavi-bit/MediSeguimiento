@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- ===== Encabezado ===== -->
+        <LinearLayout
+            android:id="@+id/hero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_hero"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/screen_gutter"
+            android:paddingTop="@dimen/space_l"
+            android:paddingBottom="28dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_glass">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_logo" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_m"
+                    android:text="@string/app_name"
+                    android:textAppearance="@style/TextAppearance.Medi.Title"
+                    android:textColor="@color/hero_on" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/saludo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:accessibilityHeading="true"
+                android:textAppearance="@style/TextAppearance.Medi.Display"
+                android:textColor="@color/hero_on" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xs"
+                android:text="@string/inicio_subtitulo"
+                android:textAppearance="@style/TextAppearance.Medi.Body"
+                android:textColor="@color/hero_on_muted" />
+
+            <!-- Tarjeta translúcida: próxima cita -->
+            <LinearLayout
+                android:id="@+id/tarjeta_proxima"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xl"
+                android:background="@drawable/bg_glass"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="@drawable/ripple_redondeado_claro"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/space_l">
+
+                <FrameLayout
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/bg_badge"
+                    android:backgroundTint="@color/hero_glass">
+
+                    <ImageView
+                        android:id="@+id/proxima_icono"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_clock"
+                        app:tint="@color/hero_on" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_l"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/inicio_proxima_cita"
+                        android:textAppearance="@style/TextAppearance.Medi.Overline"
+                        android:textColor="@color/hero_on_muted" />
+
+                    <TextView
+                        android:id="@+id/proxima_titulo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/inicio_sin_cita_titulo"
+                        android:textAppearance="@style/TextAppearance.Medi.Title"
+                        android:textColor="@color/hero_on" />
+
+                    <TextView
+                        android:id="@+id/proxima_detalle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/inicio_sin_cita_cuerpo"
+                        android:textAppearance="@style/TextAppearance.Medi.BodySmall"
+                        android:textColor="@color/hero_on_muted" />
+
+                    <TextView
+                        android:id="@+id/proxima_cuenta"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_s"
+                        android:background="@drawable/bg_pill"
+                        android:backgroundTint="@android:color/white"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="4dp"
+                        android:textAppearance="@style/TextAppearance.Medi.Label"
+                        android:textColor="@color/hero_start"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/proxima_chevron"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="@dimen/space_s"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/hero_on_muted" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ===== Contenido ===== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/screen_gutter"
+            android:paddingBottom="@dimen/space_xxl">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="@dimen/space_m"
+                android:accessibilityHeading="true"
+                android:text="@string/inicio_acciones"
+                android:textAppearance="@style/TextAppearance.Medi.Title"
+                android:textColor="?attr/colorOnSurface" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/acceso_agenda"
+                    layout="@layout/item_acceso_rapido"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="@dimen/space_m"
+                    android:layout_height="0dp" />
+
+                <include
+                    android:id="@+id/acceso_estudios"
+                    layout="@layout/item_acceso_rapido"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_m"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/acceso_historial"
+                    layout="@layout/item_acceso_rapido"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <Space
+                    android:layout_width="@dimen/space_m"
+                    android:layout_height="0dp" />
+
+                <include
+                    android:id="@+id/acceso_perfil"
+                    layout="@layout/item_acceso_rapido"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <!-- Aviso de alcance (límites del proyecto) -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xl"
+                app:cardBackgroundColor="?attr/colorTertiaryContainer"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/space_l">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginTop="1dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_info"
+                        app:tint="?attr/colorOnTertiaryContainer" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/space_m"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/aviso_titulo"
+                            android:textAppearance="@style/TextAppearance.Medi.Title"
+                            android:textColor="?attr/colorOnTertiaryContainer"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space_xs"
+                            android:text="@string/aviso_cuerpo"
+                            android:textAppearance="@style/TextAppearance.Medi.BodySmall"
+                            android:textColor="?attr/colorOnTertiaryContainer" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/raiz"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/barra_superior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/space_s"
+        android:paddingVertical="@dimen/space_xs">
+
+        <ImageButton
+            android:id="@+id/btn_cerrar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_circulo"
+            android:contentDescription="@string/cerrar"
+            android:src="@drawable/ic_close"
+            app:tint="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/titulo_barra"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_s"
+            android:layout_weight="1"
+            android:alpha="0"
+            android:text="@string/prep_titulo"
+            android:textAppearance="@style/TextAppearance.Medi.Title"
+            android:textColor="?attr/colorOnSurface" />
+    </LinearLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/screen_gutter"
+            android:paddingBottom="@dimen/space_xl">
+
+            <TextView
+                android:id="@+id/titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_s"
+                android:accessibilityHeading="true"
+                android:text="@string/prep_titulo"
+                android:textAppearance="@style/TextAppearance.Medi.Display"
+                android:textColor="?attr/colorOnSurface" />
+
+            <!-- Tarjeta de progreso con degradado -->
+            <LinearLayout
+                android:id="@+id/tarjeta_progreso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_l"
+                android:background="@drawable/bg_tarjeta_degradado"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/screen_gutter">
+
+                <FrameLayout
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+
+                    <com.google.android.material.progressindicator.CircularProgressIndicator
+                        android:id="@+id/anillo"
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:max="5"
+                        app:indicatorColor="@android:color/white"
+                        app:indicatorSize="72dp"
+                        app:trackColor="@color/hero_glass_stroke"
+                        app:trackCornerRadius="4dp"
+                        app:trackThickness="7dp" />
+
+                    <TextView
+                        android:id="@+id/progreso_numero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:textAppearance="@style/TextAppearance.Medi.Title"
+                        android:textColor="@color/hero_on"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_l"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/cita_resumen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.Medi.Overline"
+                        android:textColor="@color/hero_on_muted" />
+
+                    <TextView
+                        android:id="@+id/progreso_texto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:accessibilityLiveRegion="polite"
+                        android:textAppearance="@style/TextAppearance.Medi.Title"
+                        android:textColor="@color/hero_on" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/prep_ayuda_general"
+                        android:textAppearance="@style/TextAppearance.Medi.BodySmall"
+                        android:textColor="@color/hero_on_muted" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <include android:id="@+id/campo_motivo" layout="@layout/item_campo_preparacion" />
+            <include android:id="@+id/campo_sintomas" layout="@layout/item_campo_preparacion" />
+            <include android:id="@+id/campo_cambios" layout="@layout/item_campo_preparacion" />
+            <include android:id="@+id/campo_tratamientos" layout="@layout/item_campo_preparacion" />
+            <include android:id="@+id/campo_preguntas" layout="@layout/item_campo_preparacion" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?attr/colorOutlineVariant" />
+
+    <FrameLayout
+        android:id="@+id/barra_inferior"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurfaceContainerLowest"
+        android:paddingHorizontal="@dimen/screen_gutter"
+        android:paddingVertical="@dimen/space_m">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_guardar"
+            style="@style/Widget.Medi.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/guardar_preparacion"
+            app:iconGravity="textStart"
+            app:iconPadding="10dp" />
+    </FrameLayout>
+</LinearLayout>

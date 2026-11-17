@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="28dp"
+    android:paddingTop="72dp"
+    android:paddingBottom="190dp">
+
+    <!-- Ilustración compuesta: anillos, disco central y tarjetas flotantes -->
+    <FrameLayout
+        android:id="@+id/ilustracion"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <View
+            android:id="@+id/anillo_externo"
+            android:layout_width="290dp"
+            android:layout_height="290dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_ring" />
+
+        <View
+            android:id="@+id/anillo_medio"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_disc_glass" />
+
+        <FrameLayout
+            android:id="@+id/disco"
+            android:layout_width="136dp"
+            android:layout_height="136dp"
+            android:layout_gravity="center"
+            android:background="@drawable/bg_circle"
+            android:backgroundTint="?attr/colorSurfaceContainerLowest"
+            android:elevation="16dp">
+
+            <ImageView
+                android:id="@+id/icono"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="center"
+                android:importantForAccessibility="no"
+                app:tint="?attr/colorPrimary" />
+        </FrameLayout>
+
+        <include
+            android:id="@+id/chip1"
+            layout="@layout/item_chip_flotante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:layout_marginTop="34dp" />
+
+        <include
+            android:id="@+id/chip2"
+            layout="@layout/item_chip_flotante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="30dp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/titulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.Medi.Display"
+        android:textColor="@color/hero_on" />
+
+    <TextView
+        android:id="@+id/cuerpo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:maxWidth="320dp"
+        android:textAppearance="@style/TextAppearance.Medi.Body"
+        android:textColor="@color/hero_on_muted" />
+</LinearLayout>

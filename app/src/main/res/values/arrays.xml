@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="especialidades">
+        <item>Medicina familiar</item>
+        <item>Medicina interna</item>
+        <item>Cardiología</item>
+        <item>Endocrinología</item>
+        <item>Nefrología</item>
+        <item>Neumología</item>
+        <item>Neurología</item>
+        <item>Reumatología</item>
+        <item>Gastroenterología</item>
+        <item>Oncología</item>
+        <item>Nutrición</item>
+        <item>Psicología</item>
+        <item>Oftalmología</item>
+        <item>Ginecología</item>
+        <item>Laboratorio clínico</item>
+        <item>Estudio de imagen</item>
+    </string-array>
+    <string-array name="estudios_comunes">
+        <item>Química sanguínea</item>
+        <item>Biometría hemática</item>
+        <item>Hemoglobina glucosilada (HbA1c)</item>
+        <item>Perfil de lípidos</item>
+        <item>Examen general de orina</item>
+        <item>Pruebas de función renal</item>
+        <item>Pruebas de función hepática</item>
+        <item>Perfil tiroideo</item>
+        <item>Electrocardiograma</item>
+        <item>Radiografía de tórax</item>
+        <item>Ultrasonido</item>
+        <item>Tomografía</item>
+        <item>Resonancia magnética</item>
+        <item>Registro de presión arterial</item>
+    </string-array>
+</resources>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MediSeguimiento</string>
+
+    <!-- Navegación -->
+    <string name="nav_inicio">Inicio</string>
+    <string name="nav_agenda">Agenda</string>
+    <string name="nav_estudios">Estudios</string>
+    <string name="nav_historial">Historial</string>
+    <string name="nav_perfil">Perfil</string>
+
+    <!-- Inicio -->
+    <string name="saludo_manana">Buenos días</string>
+    <string name="saludo_tarde">Buenas tardes</string>
+    <string name="saludo_noche">Buenas noches</string>
+    <string name="inicio_subtitulo">Prepara tu próxima consulta con calma.</string>
+    <string name="inicio_proxima_cita">Próxima cita</string>
+    <string name="inicio_sin_cita_titulo">Sin citas programadas</string>
+    <string name="inicio_sin_cita_cuerpo">Agrega tu próxima consulta para recibir recordatorios y preparar lo que quieras comentar.</string>
+    <string name="inicio_acciones">Accesos rápidos</string>
+    <string name="accion_agenda">Agenda</string>
+    <string name="accion_agenda_desc">Tus citas</string>
+    <string name="accion_estudios">Estudios</string>
+    <string name="accion_estudios_desc">Resultados</string>
+    <string name="accion_historial">Historial</string>
+    <string name="accion_historial_desc">Tu evolución</string>
+    <string name="accion_perfil">Perfil</string>
+    <string name="accion_perfil_desc">Privacidad</string>
+    <string name="aviso_titulo">Herramienta de apoyo</string>
+    <string name="aviso_cuerpo">MediSeguimiento organiza la información que tú registras. No emite diagnósticos ni sustituye la valoración de tu médico.</string>
+
+    <!-- Pantallas -->
+    <string name="agenda_titulo">Agenda</string>
+    <string name="agenda_subtitulo">Tus citas de seguimiento personales</string>
+    <string name="agenda_vacia_titulo">Tu agenda está libre</string>
+    <string name="agenda_vacia_cuerpo">Cuando registres una cita aparecerá aquí, ordenada por fecha.</string>
+
+    <string name="estudios_titulo">Estudios</string>
+    <string name="estudios_subtitulo">Análisis y resultados que registras</string>
+    <string name="estudios_vacio_titulo">Aún no hay estudios</string>
+    <string name="estudios_vacio_cuerpo">Guarda el nombre, la fecha y los resultados relevantes de tus estudios para tenerlos a la mano.</string>
+
+    <string name="historial_titulo">Historial</string>
+    <string name="historial_subtitulo">Tu seguimiento en orden cronológico</string>
+    <string name="historial_vacio_titulo">Tu historia empieza aquí</string>
+    <string name="historial_vacio_cuerpo">Citas, preparaciones y estudios se reunirán en una línea de tiempo.</string>
+
+    <string name="perfil_titulo">Perfil</string>
+    <string name="perfil_subtitulo">Tus datos y privacidad</string>
+    <string name="perfil_vacio_titulo">Tu información es tuya</string>
+    <string name="perfil_vacio_cuerpo">Los datos se guardan solo en este dispositivo y únicamente se comparten si tú lo autorizas.</string>
+
+    <!-- Bienvenida -->
+    <string name="omitir">Omitir</string>
+    <string name="siguiente">Siguiente</string>
+    <string name="crear_cuenta">Crear cuenta</string>
+    <string name="ya_tengo_cuenta">Ya tengo cuenta</string>
+    <string name="slide1_titulo">Tu agenda médica,\nen un solo lugar</string>
+    <string name="slide1_cuerpo">Registra tus citas de seguimiento y recibe recordatorios antes de cada consulta.</string>
+    <string name="slide1_chip1">Cardiología · 10:30</string>
+    <string name="slide1_chip2">Recordatorio activo</string>
+    <string name="slide2_titulo">Llega preparado\na cada consulta</string>
+    <string name="slide2_cuerpo">Anota síntomas, cambios, tratamientos y preguntas para no olvidar nada importante.</string>
+    <string name="slide2_chip1">3 preguntas listas</string>
+    <string name="slide2_chip2">Síntomas anotados</string>
+    <string name="slide3_titulo">Tú decides\nqué compartir</string>
+    <string name="slide3_cuerpo">Tu información se queda en tu teléfono y solo se comparte con tu consentimiento.</string>
+    <string name="slide3_chip1">Solo en tu dispositivo</string>
+    <string name="slide3_chip2">Con tu permiso</string>
+    <string name="slide_n_de_m">Paso %1$d de %2$d</string>
+
+    <!-- Acceso -->
+    <string name="volver">Volver</string>
+    <string name="tab_login">Iniciar sesión</string>
+    <string name="tab_registro">Crear cuenta</string>
+    <string name="auth_titulo_login">Qué gusto\nverte de nuevo</string>
+    <string name="auth_sub_login">Entra para continuar con tu seguimiento.</string>
+    <string name="auth_titulo_registro">Empecemos\npor lo básico</string>
+    <string name="auth_sub_registro">Crea tu cuenta en menos de un minuto.</string>
+    <string name="campo_nombre">Nombre</string>
+    <string name="campo_correo">Correo electrónico</string>
+    <string name="campo_password">Contraseña</string>
+    <string name="campo_confirmar">Confirmar contraseña</string>
+    <string name="ayuda_password">Mínimo 8 caracteres, con letras y números</string>
+    <string name="fuerza_debil">Débil</string>
+    <string name="fuerza_regular">Regular</string>
+    <string name="fuerza_buena">Buena</string>
+    <string name="fuerza_excelente">Excelente</string>
+    <string name="fuerza_etiqueta">Seguridad de la contraseña</string>
+    <string name="consentimiento_registro">Entiendo que MediSeguimiento es una herramienta de apoyo y que mis datos se guardan solo en este dispositivo.</string>
+    <string name="error_consentimiento">Necesitamos tu confirmación para continuar</string>
+    <string name="btn_entrar">Entrar</string>
+    <string name="btn_crear">Crear mi cuenta</string>
+    <string name="btn_verificando">Verificando…</string>
+    <string name="btn_creando">Creando tu cuenta…</string>
+    <string name="btn_listo">¡Listo!</string>
+    <string name="auth_pie">Tu contraseña se guarda protegida con hash y sal única. Nada sale de tu teléfono.</string>
+    <string name="intentos_restantes">Correo o contraseña incorrectos. Te quedan %1$d intentos.</string>
+    <string name="bloqueo_cuenta">Por seguridad, espera %1$d s antes de volver a intentar.</string>
+
+    <!-- Perfil -->
+    <string name="perfil_miembro_desde">Miembro desde %1$s</string>
+    <string name="perfil_seccion_privacidad">Privacidad y seguridad</string>
+    <string name="perfil_local_titulo">Datos solo en este dispositivo</string>
+    <string name="perfil_local_cuerpo">No se envían a ningún servidor ni se respaldan en la nube.</string>
+    <string name="perfil_hash_titulo">Contraseña protegida</string>
+    <string name="perfil_hash_cuerpo">Se guarda con PBKDF2 y una sal única; nunca en texto plano.</string>
+    <string name="perfil_consent_titulo">Compartes solo con tu permiso</string>
+    <string name="perfil_consent_cuerpo">Cada resumen requiere tu consentimiento explícito.</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
+    <string name="cerrar_sesion_titulo">¿Cerrar sesión?</string>
+    <string name="cerrar_sesion_cuerpo">Tus datos seguirán guardados en este dispositivo. Podrás volver a entrar con tu correo y contraseña.</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="version_pie">MediSeguimiento %1$s · Prototipo académico</string>
+
+    <!-- Agenda -->
+    <string name="filtro_proximas">Próximas</string>
+    <string name="filtro_pasadas">Pasadas</string>
+    <string name="filtro_canceladas">Canceladas</string>
+    <string name="nueva_cita">Nueva cita</string>
+    <string name="agregar_cita">Agregar cita</string>
+    <string name="agenda_pasadas_vacio_titulo">Sin citas pasadas</string>
+    <string name="agenda_pasadas_vacio_cuerpo">Aquí verás las consultas que ya ocurrieron o que marcaste como completadas.</string>
+    <string name="agenda_canceladas_vacio_titulo">Ninguna cita cancelada</string>
+    <string name="agenda_canceladas_vacio_cuerpo">Las citas que canceles se guardan aquí por si necesitas consultarlas.</string>
+    <string name="agenda_dia_vacio_titulo">Día libre</string>
+    <string name="agenda_dia_vacio_cuerpo">No tienes citas programadas para este día.</string>
+    <string name="estado_programada">Programada</string>
+    <string name="estado_completada">Completada</string>
+    <string name="estado_cancelada">Cancelada</string>
+    <string name="dia_con_citas">%1$s, tiene citas</string>
+
+    <!-- Formulario de cita -->
+    <string name="editar_cita">Editar cita</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="form_seccion_quien">¿Con quién es tu cita?</string>
+    <string name="form_seccion_cuando">¿Cuándo?</string>
+    <string name="form_seccion_notas">Notas</string>
+    <string name="campo_especialidad">Especialidad o tipo de consulta</string>
+    <string name="campo_medico">Médico (opcional)</string>
+    <string name="campo_lugar">Lugar o clínica (opcional)</string>
+    <string name="campo_fecha">Fecha</string>
+    <string name="campo_hora">Hora</string>
+    <string name="campo_notas">Indicaciones, documentos que llevar… (opcional)</string>
+    <string name="rapido_manana">Mañana</string>
+    <string name="rapido_semana">En una semana</string>
+    <string name="rapido_mes">En un mes</string>
+    <string name="guardar_cita">Guardar cita</string>
+    <string name="guardar_cambios">Guardar cambios</string>
+    <string name="guardando">Guardando…</string>
+    <string name="aviso_cita_personal">Esta agenda es personal: registrar una cita aquí no la reserva en ninguna institución de salud.</string>
+    <string name="descartar_titulo">¿Descartar cambios?</string>
+    <string name="descartar_cuerpo">Perderás lo que escribiste en esta cita.</string>
+    <string name="descartar">Descartar</string>
+    <string name="seguir_editando">Seguir editando</string>
+    <string name="conflicto_titulo">La cita cambió</string>
+    <string name="recargar">Cargar versión reciente</string>
+    <string name="cita_guardada">Cita guardada</string>
+    <string name="cita_actualizada">Cambios guardados</string>
+    <string name="seleccionar_fecha">Elige la fecha de tu cita</string>
+    <string name="seleccionar_hora">Elige la hora</string>
+
+    <!-- Detalle de cita -->
+    <string name="mas_opciones">Más opciones</string>
+    <string name="detalle_medico">Médico</string>
+    <string name="detalle_lugar">Lugar</string>
+    <string name="detalle_notas">Notas</string>
+    <string name="detalle_sin_datos">Sin datos adicionales. Puedes agregar médico, lugar o notas editando la cita.</string>
+    <string name="detalle_seccion">Detalles</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="cancelar_cita">Cancelar cita</string>
+    <string name="marcar_completada">Marcar como completada</string>
+    <string name="reprogramar">Reactivar cita</string>
+    <string name="cancelar_cita_titulo">¿Cancelar esta cita?</string>
+    <string name="cancelar_cita_cuerpo">Se moverá a Canceladas. Podrás reactivarla después si cambias de opinión.</string>
+    <string name="no_cancelar">Mantener</string>
+    <string name="eliminar_cita_titulo">¿Eliminar esta cita?</string>
+    <string name="eliminar_cita_cuerpo">Se borrarán la cita y su información asociada. Esta acción no se puede deshacer.</string>
+    <string name="cita_cancelada">Cita cancelada</string>
+    <string name="cita_completada">¡Bien! Cita marcada como completada</string>
+    <string name="cita_reactivada">Cita reactivada</string>
+    <string name="cita_eliminada">Cita eliminada</string>
+    <string name="deshacer">Deshacer</string>
+
+    <!-- Inicio con cita -->
+    <string name="inicio_ver_detalle">Ver detalles de la próxima cita</string>
+
+    <!-- Preparación -->
+    <string name="preparar_consulta">Preparar consulta</string>
+    <string name="preparar">Preparar</string>
+    <string name="continuar_preparacion">Continuar</string>
+    <string name="editar_preparacion">Editar</string>
+    <string name="ver_resumen">Ver resumen</string>
+    <string name="prep_titulo">Prepara tu consulta</string>
+    <string name="prep_tarjeta_titulo">Preparación de la consulta</string>
+    <string name="prep_progreso">%1$d de %2$d apartados listos</string>
+    <string name="prep_progreso_corto">%1$d/%2$d</string>
+    <string name="prep_ayuda_general">Mientras más completo, más claro será el contexto para tu médico.</string>
+    <string name="prep_motivo">Motivo de la consulta</string>
+    <string name="prep_motivo_ayuda">¿Por qué vas a esta cita? Ej. revisión de control de glucosa.</string>
+    <string name="prep_sintomas">Síntomas</string>
+    <string name="prep_sintomas_ayuda">Qué sientes, desde cuándo y con qué frecuencia.</string>
+    <string name="prep_cambios">Cambios recientes</string>
+    <string name="prep_cambios_ayuda">Cambios en tu salud, peso, sueño, alimentación o ánimo.</string>
+    <string name="prep_tratamientos">Tratamientos que tomas</string>
+    <string name="prep_tratamientos_ayuda">Medicamentos, dosis y horarios tal como los tomas.</string>
+    <string name="prep_preguntas">Preguntas para tu médico</string>
+    <string name="prep_preguntas_ayuda">Escribe una pregunta por renglón para no olvidar ninguna.</string>
+    <string name="prep_escribe_aqui">Escribe aquí…</string>
+    <string name="guardar_preparacion">Guardar preparación</string>
+    <string name="prep_guardada">Preparación guardada</string>
+
+    <!-- Estudios -->
+    <string name="nuevo_estudio">Nuevo estudio</string>
+    <string name="editar_estudio">Editar estudio</string>
+    <string name="agregar_estudio">Agregar estudio</string>
+    <string name="estudio_seccion_que">¿Qué estudio te hiciste?</string>
+    <string name="estudio_seccion_resultados">Resultados</string>
+    <string name="estudio_seccion_vincular">Vincular a una cita</string>
+    <string name="campo_estudio">Nombre del estudio</string>
+    <string name="campo_laboratorio">Laboratorio o clínica (opcional)</string>
+    <string name="campo_fecha_estudio">Fecha en que se realizó</string>
+    <string name="campo_resultado">Resultados relevantes (ej. Glucosa 110 mg/dL)</string>
+    <string name="campo_notas_estudio">Notas (opcional)</string>
+    <string name="campo_cita_vinculada">Cita relacionada (opcional)</string>
+    <string name="sin_vincular">Sin vincular</string>
+    <string name="estudio_vincular_ayuda">Los estudios vinculados aparecen primero en el resumen de esa cita.</string>
+    <string name="guardar_estudio">Guardar estudio</string>
+    <string name="estudio_guardado">Estudio guardado</string>
+    <string name="estudio_eliminado">Estudio eliminado</string>
+    <string name="eliminar_estudio_titulo">¿Eliminar este estudio?</string>
+    <string name="eliminar_estudio_cuerpo">Se borrará el registro y sus resultados. Esta acción no se puede deshacer.</string>
+    <string name="sin_resultado">Sin resultados registrados</string>
+    <string name="vinculado_a">Para: %1$s</string>
+    <string name="error_estudio_nombre">Escribe el nombre del estudio</string>
+    <string name="error_estudio_futuro">La fecha no puede ser futura</string>
+    <string name="aviso_estudio">Los resultados los capturas tú; la app no los interpreta ni sustituye al reporte del laboratorio.</string>
+
+    <!-- Historial -->
+    <string name="filtro_todo">Todo</string>
+    <string name="filtro_consultas">Consultas</string>
+    <string name="filtro_estudios">Estudios</string>
+    <string name="tipo_consulta">Consulta</string>
+    <string name="tipo_estudio">Estudio</string>
+    <string name="historial_proxima">Próxima</string>
+    <string name="historial_prep">Preparación: %1$d/%2$d</string>
+
+    <!-- Resumen -->
+    <string name="resumen_generando">Reuniendo tu información…</string>
+    <string name="resumen_consentimiento">Autorizo compartir este resumen con el personal de salud que yo elija.</string>
+    <string name="resumen_destinatario">¿Con quién lo compartes? (opcional)</string>
+    <string name="copiar">Copiar</string>
+    <string name="compartir">Compartir</string>
+    <string name="resumen_copiado">Resumen copiado</string>
+    <string name="resumen_compartir_titulo">Compartir resumen</string>
+    <string name="resumen_requiere_consentimiento">Marca la autorización para poder compartir</string>
+    <string name="resumen_pie">Información proporcionada por el paciente. No sustituye el expediente clínico ni la valoración médica.</string>
+    <string name="resumen_completitud">%1$d de 5 apartados de preparación completos</string>
+
+    <!-- Recordatorios -->
+    <string name="form_seccion_recordatorio">Recordatorio</string>
+    <string name="recordatorio_ninguno">Sin aviso</string>
+    <string name="recordatorio_15">15 min antes</string>
+    <string name="recordatorio_60">1 h antes</string>
+    <string name="recordatorio_dia">1 día antes</string>
+    <string name="recordatorio_aviso">Te avisaremos el %1$s a las %2$s.</string>
+    <string name="recordatorio_pasado">Ese momento ya pasó; elige otra anticipación.</string>
+    <string name="recordatorio_sin">No recibirás aviso para esta cita.</string>
+    <string name="recordatorio_permiso_negado">Sin permiso de notificaciones no podremos avisarte. Puedes activarlo en Ajustes.</string>
+    <string name="detalle_recordatorio">Recordatorio</string>
+
+    <!-- Perfil: estadísticas -->
+    <string name="stat_proximas">Próximas</string>
+    <string name="stat_estudios">Estudios</string>
+    <string name="stat_preparadas">Preparadas</string>
+</resources>
