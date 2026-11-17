@@ -36,6 +36,10 @@ public class AgendaViewModel extends AndroidViewModel {
         public final Set<Long> diasConCitas;
         public final Filtro filtro;
         @Nullable public final Long dia;
+        /** Modo calendario por horas: día mostrado y sus citas (sin canceladas). */
+        public boolean calendario;
+        public long diaCalendario;
+        public List<Cita> delDia = new ArrayList<>();
 
         Estado(List<ItemAgenda> items, Set<Long> diasConCitas, Filtro filtro, @Nullable Long dia) {
             this.items = items;
@@ -48,6 +52,9 @@ public class AgendaViewModel extends AndroidViewModel {
     private final LiveData<List<Cita>> citas;
     private final MutableLiveData<Filtro> filtro = new MutableLiveData<>(Filtro.PROXIMAS);
     private final MutableLiveData<Long> dia = new MutableLiveData<>(null);
+    private final MutableLiveData<Boolean> calendario = new MutableLiveData<>(false);
+    private final MutableLiveData<Long> diaCalendario =
+            new MutableLiveData<>(java.time.LocalDate.now(Fechas.zona()).toEpochDay());
     private final MediatorLiveData<Estado> estado = new MediatorLiveData<>();
     private final AtomicInteger generacion = new AtomicInteger();
 
@@ -57,6 +64,8 @@ public class AgendaViewModel extends AndroidViewModel {
         estado.addSource(citas, c -> recalcular());
         estado.addSource(filtro, f -> recalcular());
         estado.addSource(dia, d -> recalcular());
+        estado.addSource(calendario, d -> recalcular());
+        estado.addSource(diaCalendario, d -> recalcular());
     }
 
     public LiveData<Estado> estado() { return estado; }
@@ -70,8 +79,16 @@ public class AgendaViewModel extends AndroidViewModel {
         }
     }
 
+    public boolean esCalendario() { return Boolean.TRUE.equals(calendario.getValue()); }
+
+    public void setCalendario(boolean c) { if (c != esCalendario()) calendario.setValue(c); }
+
     /** Selecciona un día (epochDay); tocar el mismo día de nuevo lo deselecciona. */
     public void alternarDia(long epochDay) {
+        if (esCalendario()) {
+            diaCalendario.setValue(epochDay);
+            return;
+        }
         Long actual = dia.getValue();
         dia.setValue(actual != null && actual == epochDay ? null : epochDay);
         if (filtro.getValue() != Filtro.PROXIMAS) filtro.setValue(Filtro.PROXIMAS);
@@ -86,12 +103,28 @@ public class AgendaViewModel extends AndroidViewModel {
         final List<Cita> copia = new ArrayList<>(fuente);
         final Filtro f = filtro.getValue();
         final Long d = dia.getValue();
+        final boolean cal = esCalendario();
+        final long dc = diaCalendario.getValue() == null ? 0 : diaCalendario.getValue();
         final int gen = generacion.incrementAndGet();
         AppExecutors.get().computo().execute(() -> {
             Estado e = construir(copia, f, d, System.currentTimeMillis());
+            e.calendario = cal;
+            e.diaCalendario = dc;
+            e.delDia = delDia(copia, dc);
             // Solo se publica si nadie pidió un cálculo más reciente.
             if (gen == generacion.get()) estado.postValue(e);
         });
+    }
+
+    /** Citas no canceladas de un día, en orden de inicio. */
+    static List<Cita> delDia(List<Cita> todas, long epochDay) {
+        List<Cita> out = new ArrayList<>();
+        for (Cita c : todas) {
+            if (Cita.ESTADO_CANCELADA.equals(c.estado)) continue;
+            if (Fechas.aFecha(c.fechaHora).toEpochDay() == epochDay) out.add(c);
+        }
+        out.sort((a, b) -> Long.compare(a.fechaHora, b.fechaHora));
+        return out;
     }
 
     static Estado construir(List<Cita> todas, Filtro f, @Nullable Long dia, long ahora) {

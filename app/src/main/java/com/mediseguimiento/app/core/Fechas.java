@@ -81,6 +81,20 @@ public final class Fechas {
         return h24 ? hora(ms, true) : hora(ms, false) + " " + periodo(ms);
     }
 
+    /** Rango de horas: "9:00 – 9:30 a. m." o "11:30 a. m. – 12:15 p. m." (12 h) / "09:00 – 09:30" (24 h). */
+    public static String rangoHoras(long inicio, long fin, boolean h24) {
+        if (h24) return hora(inicio, true) + " – " + hora(fin, true);
+        if (periodo(inicio).equals(periodo(fin))) return hora(inicio, false) + " – " + horaCompleta(fin, false);
+        return horaCompleta(inicio, false) + " – " + horaCompleta(fin, false);
+    }
+
+    /** Duración legible: "30 min", "1 h", "1 h 30 min". */
+    public static String duracion(int minutos) {
+        if (minutos < 60) return minutos + " min";
+        int h = minutos / 60, m = minutos % 60;
+        return m == 0 ? h + " h" : h + " h " + m + " min";
+    }
+
     /** Diferencia en días de calendario (no en bloques de 24 h). */
     public static long diasEntre(long desde, long hasta) {
         return ChronoUnit.DAYS.between(aFecha(desde), aFecha(hasta));

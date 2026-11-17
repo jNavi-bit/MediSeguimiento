@@ -85,6 +85,7 @@ public class AuthActivity extends AppCompatActivity {
 
         configurarCampos();
         b.btnAccion.setOnClickListener(v -> enviar());
+        configurarDemo();
 
         vm.modoRegistro().observe(this, this::aplicarModo);
         vm.estado().observe(this, this::render);
@@ -99,6 +100,29 @@ public class AuthActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         if (temporizadorBloqueo != null) temporizadorBloqueo.cancel();
+    }
+
+    // ================= Cuenta de demostración =================
+
+    /** Solo en la versión de prueba: crea (o reinicia) la cuenta demo y entra con ella. */
+    private void configurarDemo() {
+        if (!com.mediseguimiento.app.BuildConfig.DEBUG) return;
+        b.btnDemo.setVisibility(View.VISIBLE);
+        b.demoCredenciales.setVisibility(View.VISIBLE);
+        Animaciones.alinearIcono(b.btnDemo);
+        b.btnDemo.setOnClickListener(v -> {
+            if (vm.ocupado()) return;
+            com.mediseguimiento.app.ui.common.Botones.cargando(b.btnDemo, getString(R.string.demo_cargando));
+            com.mediseguimiento.app.core.AppExecutors ex = com.mediseguimiento.app.core.AppExecutors.get();
+            ex.io().execute(() -> {
+                long id = com.mediseguimiento.app.core.demo.DatosDemo.crear(this);
+                ex.main().execute(() -> {
+                    new Sesion(this).iniciar(id);
+                    Animaciones.vibrarExito(b.btnDemo);
+                    irAInicio();
+                });
+            });
+        });
     }
 
     // ================= Modo (login / registro) =================

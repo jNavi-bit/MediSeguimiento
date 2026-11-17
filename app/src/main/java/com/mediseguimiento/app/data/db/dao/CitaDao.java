@@ -20,12 +20,12 @@ public interface CitaDao {
      * nadie modificó la cita desde que se leyó. Devuelve 0 si hubo conflicto.
      */
     @Query("UPDATE citas SET fecha_hora = :fechaHora, especialidad = :especialidad, " +
-            "medico = :medico, lugar = :lugar, notas = :notas, estado = :estado, " +
+            "medico = :medico, lugar = :lugar, notas = :notas, estado = :estado, duracion_min = :duracionMin, " +
             "actualizado_en = :ahora, version = version + 1 " +
             "WHERE id = :id AND paciente_id = :pacienteId AND version = :versionLeida")
     int actualizarSiVersion(long id, long pacienteId, int versionLeida, long fechaHora,
                             String especialidad, String medico, String lugar,
-                            String notas, String estado, long ahora);
+                            String notas, String estado, int duracionMin, long ahora);
 
     @Query("UPDATE citas SET estado = :estado, actualizado_en = :ahora, version = version + 1 " +
             "WHERE id = :id AND paciente_id = :pacienteId")

@@ -47,6 +47,8 @@ public class CitaFormActivity extends AppCompatActivity {
 
     public static final String EXTRA_ID = "cita_id";
     public static final String EXTRA_DIA = "dia";
+    /** Minutos desde medianoche: hora propuesta al tocar un hueco del calendario. */
+    public static final String EXTRA_MINUTO = "minuto";
     public static final String RESULTADO_MENSAJE = "mensaje";
 
     private ActivityCitaFormBinding b;
@@ -103,6 +105,13 @@ public class CitaFormActivity extends AppCompatActivity {
         b.chipManana.setOnClickListener(v -> fijarFecha(LocalDate.now(Fechas.zona()).plusDays(1)));
         b.chipSemana.setOnClickListener(v -> fijarFecha(LocalDate.now(Fechas.zona()).plusWeeks(1)));
         b.chipMes.setOnClickListener(v -> fijarFecha(LocalDate.now(Fechas.zona()).plusMonths(1)));
+
+        b.grupoDuracion.setOnCheckedStateChangeListener((g, ids) -> {
+            if (ids.isEmpty()) return;
+            int chip = ids.get(0);
+            vm.duracionMin = chip == R.id.dur_15 ? 15 : chip == R.id.dur_45 ? 45 : chip == R.id.dur_60 ? 60
+                    : chip == R.id.dur_90 ? 90 : chip == R.id.dur_120 ? 120 : 30;
+        });
 
         b.grupoRecordatorio.setOnCheckedStateChangeListener((g, ids) -> {
             if (ids.isEmpty()) return;
@@ -164,9 +173,10 @@ public class CitaFormActivity extends AppCompatActivity {
         long diaExtra = getIntent().getLongExtra(EXTRA_DIA, Long.MIN_VALUE);
         LocalDate hoy = LocalDate.now(Fechas.zona());
         vm.fecha = diaExtra != Long.MIN_VALUE ? LocalDate.ofEpochDay(diaExtra) : hoy.plusDays(1);
-        vm.hora = LocalTime.of(9, 0);
+        int minuto = getIntent().getIntExtra(EXTRA_MINUTO, -1);
+        vm.hora = minuto >= 0 ? LocalTime.of(minuto / 60, minuto % 60) : LocalTime.of(9, 0);
         // Si la fecha es hoy y las 9:00 ya pasaron, se propone la siguiente hora en punto.
-        if (vm.fecha.equals(hoy)) {
+        if (vm.fecha.equals(hoy) && minuto < 0) {
             LocalTime siguiente = LocalTime.now(Fechas.zona()).plusHours(1).withMinute(0).withSecond(0).withNano(0);
             if (siguiente.isAfter(vm.hora)) vm.hora = siguiente;
         }
@@ -189,6 +199,7 @@ public class CitaFormActivity extends AppCompatActivity {
         b.etNotas.setText(c.notas);
         vm.fecha = Fechas.aFecha(c.fechaHora);
         vm.hora = Fechas.aLocal(c.fechaHora).toLocalTime().withSecond(0).withNano(0);
+        vm.duracionMin = c.duracionMin;
         vm.recordatorioMin = c.recordatorioMin == Cita.RECORDATORIO_SIN_CAMBIO
                 ? Cita.RECORDATORIO_NINGUNO : c.recordatorioMin;
     }
@@ -242,8 +253,16 @@ public class CitaFormActivity extends AppCompatActivity {
                 ? " " + vm.fecha.getYear() : ""));
         b.etHora.setText(Fechas.horaCompleta(ms, h24));
         marcarRecordatorio();
+        marcarDuracion();
         explicarRecordatorio();
         if (intentado) validar(false);
+    }
+
+    private void marcarDuracion() {
+        int m = vm.duracionMin;
+        int chip = m <= 15 ? R.id.dur_15 : m <= 30 ? R.id.dur_30 : m <= 45 ? R.id.dur_45
+                : m <= 60 ? R.id.dur_60 : m <= 90 ? R.id.dur_90 : R.id.dur_120;
+        if (b.grupoDuracion.getCheckedChipId() != chip) b.grupoDuracion.check(chip);
     }
 
     private void marcarRecordatorio() {
@@ -365,6 +384,7 @@ public class CitaFormActivity extends AppCompatActivity {
         c.notas = opcional(b.etNotas);
         c.fechaHora = fechaHora();
         c.recordatorioMin = vm.recordatorioMin;
+        c.duracionMin = vm.duracionMin;
         if (vm.recordatorioMin >= 0) pedirPermisoSiHaceFalta();
         vm.guardar(c, nueva);
     }
@@ -414,7 +434,7 @@ public class CitaFormActivity extends AppCompatActivity {
 
     private String instantanea() {
         return texto(b.etEspecialidad) + "|" + texto(b.etMedico) + "|" + texto(b.etLugar) + "|"
-                + texto(b.etNotas) + "|" + vm.fecha + "|" + vm.hora + "|" + vm.recordatorioMin;
+                + texto(b.etNotas) + "|" + vm.fecha + "|" + vm.hora + "|" + vm.recordatorioMin + "|" + vm.duracionMin;
     }
 
     private void salir() {

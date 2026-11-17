@@ -29,6 +29,8 @@ public class CitaFormViewModel extends AndroidViewModel {
     public LocalTime hora;
     /** Minutos de anticipación del aviso; -1 = sin aviso. */
     public int recordatorioMin = 24 * 60;
+    /** Duración estimada de la cita en minutos. */
+    public int duracionMin = 30;
     /** Instantánea inicial para detectar cambios sin guardar. */
     public String instantaneaInicial;
     public boolean inicializado;

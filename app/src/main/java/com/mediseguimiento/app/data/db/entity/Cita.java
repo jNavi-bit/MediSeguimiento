@@ -46,6 +46,13 @@ public class Cita {
     @Nullable
     public String notas;
 
+    /** Duración estimada en minutos (para dibujar la cita en la vista por horas). */
+    @ColumnInfo(name = "duracion_min", defaultValue = "30")
+    public int duracionMin = 30;
+
+    /** Hora de término en milisegundos epoch. */
+    public long fin() { return fechaHora + duracionMin * 60_000L; }
+
     @NonNull
     public String estado = ESTADO_PROGRAMADA;
 

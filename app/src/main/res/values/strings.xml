@@ -274,4 +274,15 @@
     <string name="stat_proximas">Próximas</string>
     <string name="stat_estudios">Estudios</string>
     <string name="stat_preparadas">Preparadas</string>
+    <string name="campo_duracion">Duración aproximada</string>
+
+    <!-- Vista de calendario -->
+    <string name="vista_lista">Ver como lista</string>
+    <string name="vista_calendario">Ver como calendario por horas</string>
+    <string name="calendario_dia_resumen">%1$s · %2$s</string>
+    <string name="calendario_sin_citas">Sin citas · toca una hora para agendar</string>
+    <string name="calendario_ahora">Ahora</string>
+    <string name="demo_boton">Explorar con cuenta de demostración</string>
+    <string name="demo_credenciales">demo@mediseguimiento.mx · Demo2026 (datos ficticios)</string>
+    <string name="demo_cargando">Preparando datos de ejemplo…</string>
 </resources>

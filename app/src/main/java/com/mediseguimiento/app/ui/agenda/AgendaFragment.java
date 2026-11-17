@@ -99,6 +99,13 @@ public class AgendaFragment extends Fragment {
                     : AgendaViewModel.Filtro.PROXIMAS);
         });
 
+        b.btnVistaLista.setOnClickListener(v -> cambiarVista(false));
+        b.btnVistaCalendario.setOnClickListener(v -> cambiarVista(true));
+        b.vistaDia.setAlTocar(new VistaDiaView.AlTocar() {
+            @Override public void cita(com.mediseguimiento.app.data.db.entity.Cita c) { abrirDetalle(c.id); }
+            @Override public void hueco(int minuto) { nuevaCita(minuto); }
+        });
+
         b.fab.setOnClickListener(v -> nuevaCita());
         b.vacio.accion.setOnClickListener(v -> nuevaCita());
 
@@ -124,7 +131,67 @@ public class AgendaFragment extends Fragment {
         }
     }
 
+    private long diaPintado = Long.MIN_VALUE;
+
+    private void cambiarVista(boolean calendario) {
+        if (calendario == vm.esCalendario()) return;
+        Animaciones.vibrarToque(b.selectorVista);
+        vm.setCalendario(calendario);
+    }
+
+    /** Selector tipo píldora: la opción activa lleva fondo claro y el ícono en color primario. */
+    private void pintarSelector(boolean calendario) {
+        int activo = com.google.android.material.color.MaterialColors.getColor(b.selectorVista, androidx.appcompat.R.attr.colorPrimary);
+        int inactivo = com.google.android.material.color.MaterialColors.getColor(b.selectorVista,
+                com.google.android.material.R.attr.colorOnSurfaceVariant);
+        b.btnVistaLista.setBackgroundResource(calendario ? R.drawable.ripple_pill : R.drawable.bg_segmento_sel);
+        b.btnVistaCalendario.setBackgroundResource(calendario ? R.drawable.bg_segmento_sel : R.drawable.ripple_pill);
+        b.btnVistaLista.setImageTintList(ColorStateList.valueOf(calendario ? inactivo : activo));
+        b.btnVistaCalendario.setImageTintList(ColorStateList.valueOf(calendario ? activo : inactivo));
+        b.btnVistaLista.setSelected(!calendario);
+        b.btnVistaCalendario.setSelected(calendario);
+    }
+
+    private void pintarCalendario(AgendaViewModel.Estado e) {
+        LocalDate d = LocalDate.ofEpochDay(e.diaCalendario);
+        long ahora = System.currentTimeMillis();
+        long ms = Fechas.aMillis(d, java.time.LocalTime.NOON);
+        String fecha = Fechas.encabezadoDia(ms, ahora);
+        String cuantas = e.delDia.isEmpty() ? getString(R.string.calendario_sin_citas)
+                : e.delDia.size() == 1 ? "1 cita" : e.delDia.size() + " citas";
+        b.calendarioTitulo.setText(getString(R.string.calendario_dia_resumen, fecha, cuantas));
+        b.vistaDia.setDatos(d, e.delDia, android.text.format.DateFormat.is24HourFormat(requireContext()));
+        if (diaPintado != e.diaCalendario) {
+            diaPintado = e.diaCalendario;
+            b.calendarioScroll.post(() -> {
+                if (b != null) b.calendarioScroll.smoothScrollTo(0, b.vistaDia.posicionInicial());
+            });
+        }
+    }
+
     private void pintar(AgendaViewModel.Estado e) {
+        pintarSelector(e.calendario);
+        if (e.calendario) {
+            dias.actualizar(e.diasConCitas, e.diaCalendario);
+            b.filtrosScroll.setVisibility(View.GONE);
+            b.lista.setVisibility(View.GONE);
+            b.vacioContenedor.setVisibility(View.GONE);
+            if (b.calendarioContenedor.getVisibility() != View.VISIBLE) {
+                b.calendarioContenedor.setVisibility(View.VISIBLE);
+                Animaciones.entrar(b.calendarioContenedor, 0);
+                diaPintado = Long.MIN_VALUE;
+            }
+            if (!b.fab.isShown()) b.fab.show();
+            pintarCalendario(e);
+            actualizarMes();
+            return;
+        }
+        if (b.calendarioContenedor.getVisibility() == View.VISIBLE) {
+            b.calendarioContenedor.setVisibility(View.GONE);
+            b.filtrosScroll.setVisibility(View.VISIBLE);
+            b.lista.setVisibility(View.VISIBLE);
+            Animaciones.entrar(b.lista, 0);
+        }
         int chip = e.filtro == AgendaViewModel.Filtro.PASADAS ? R.id.chip_pasadas
                 : e.filtro == AgendaViewModel.Filtro.CANCELADAS ? R.id.chip_canceladas : R.id.chip_proximas;
         if (b.filtros.getCheckedChipId() != chip) b.filtros.check(chip);
@@ -187,10 +254,15 @@ public class AgendaFragment extends Fragment {
         b.mes.setText(Fechas.mesAnio(LocalDate.ofEpochDay(dias.diaEn(pos))));
     }
 
-    private void nuevaCita() {
+    private void nuevaCita() { nuevaCita(-1); }
+
+    /** Nueva cita; en modo calendario usa el día mostrado y, si se tocó un hueco, esa hora. */
+    private void nuevaCita(int minuto) {
         Intent i = new Intent(requireContext(), CitaFormActivity.class);
         AgendaViewModel.Estado e = vm.estado().getValue();
-        if (e != null && e.dia != null) i.putExtra(CitaFormActivity.EXTRA_DIA, e.dia);
+        if (e != null && e.calendario) i.putExtra(CitaFormActivity.EXTRA_DIA, e.diaCalendario);
+        else if (e != null && e.dia != null) i.putExtra(CitaFormActivity.EXTRA_DIA, e.dia);
+        if (minuto >= 0) i.putExtra(CitaFormActivity.EXTRA_MINUTO, minuto);
         abrir.launch(i, ActivityOptionsCompat.makeCustomAnimation(requireContext(),
                 R.anim.hoja_entrar, R.anim.quieto));
     }

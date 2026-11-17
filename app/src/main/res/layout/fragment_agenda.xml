@@ -33,22 +33,56 @@
                     android:textAppearance="@style/TextAppearance.Medi.Display"
                     android:textColor="?attr/colorOnSurface" />
 
+                <LinearLayout
+                    android:id="@+id/selector_vista"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/bg_segment_track"
+                    android:orientation="horizontal"
+                    android:padding="3dp">
+
+                    <ImageButton
+                        android:id="@+id/btn_vista_lista"
+                        android:layout_width="44dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_segmento_sel"
+                        android:contentDescription="@string/vista_lista"
+                        android:src="@drawable/ic_view_list" />
+
+                    <ImageButton
+                        android:id="@+id/btn_vista_calendario"
+                        android:layout_width="44dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/ripple_pill"
+                        android:contentDescription="@string/vista_calendario"
+                        android:src="@drawable/ic_view_day" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_xs"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/agenda_subtitulo"
+                    android:textAppearance="@style/TextAppearance.Medi.Body"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
                 <TextView
                     android:id="@+id/mes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="6dp"
+                    android:layout_marginStart="@dimen/space_s"
                     android:textAppearance="@style/TextAppearance.Medi.Label"
                     android:textColor="?attr/colorPrimary" />
             </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/space_xs"
-                android:text="@string/agenda_subtitulo"
-                android:textAppearance="@style/TextAppearance.Medi.Body"
-                android:textColor="?attr/colorOnSurfaceVariant" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
@@ -62,6 +96,7 @@
             android:paddingHorizontal="@dimen/screen_gutter" />
 
         <HorizontalScrollView
+            android:id="@+id/filtros_scroll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/space_m"
@@ -115,6 +150,40 @@
                 android:clipToPadding="false"
                 android:paddingHorizontal="@dimen/screen_gutter"
                 android:paddingBottom="104dp" />
+
+            <!-- Vista de calendario por horas: título fijo y día desplazable -->
+            <LinearLayout
+                android:id="@+id/calendario_contenedor"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/calendario_titulo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:accessibilityLiveRegion="polite"
+                    android:paddingHorizontal="@dimen/screen_gutter"
+                    android:paddingTop="@dimen/space_l"
+                    android:paddingBottom="@dimen/space_s"
+                    android:textAppearance="@style/TextAppearance.Medi.Label"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/calendario_scroll"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clipToPadding="false"
+                    android:paddingBottom="104dp">
+
+                    <com.mediseguimiento.app.ui.agenda.VistaDiaView
+                        android:id="@+id/vista_dia"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="4dp" />
+                </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
 
             <androidx.core.widget.NestedScrollView
                 android:id="@+id/vacio_contenedor"

@@ -124,7 +124,7 @@ public class CitaDetalleActivity extends AppCompatActivity {
         b.subtitulo.setText(TextUtils.isEmpty(c.medico) ? getString(R.string.aviso_titulo) : c.medico);
         b.subtitulo.setVisibility(TextUtils.isEmpty(c.medico) ? View.GONE : View.VISIBLE);
         b.fecha.setText(Fechas.fechaLarga(c.fechaHora, ahora));
-        b.hora.setText(Fechas.horaCompleta(c.fechaHora, h24));
+        b.hora.setText(Fechas.rangoHoras(c.fechaHora, c.fin(), h24));
 
         String estado = cancelada ? getString(R.string.estado_cancelada)
                 : completada ? getString(R.string.estado_completada)

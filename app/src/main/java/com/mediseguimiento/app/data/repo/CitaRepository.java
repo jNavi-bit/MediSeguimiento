@@ -141,7 +141,7 @@ public class CitaRepository {
                 throw new ErrorCita(Falla.DUPLICADA, "Ya tienes una cita de " + c.especialidad + " a esa hora");
             }
             int n = dao.actualizarSiVersion(c.id, pacienteId, c.version, c.fechaHora, c.especialidad,
-                    c.medico, c.lugar, c.notas, c.estado, System.currentTimeMillis());
+                    c.medico, c.lugar, c.notas, c.estado, c.duracionMin, System.currentTimeMillis());
             if (n == 0) {
                 if (dao.obtener(c.id, pacienteId) == null) {
                     throw new ErrorCita(Falla.NO_EXISTE, "La cita ya no existe");

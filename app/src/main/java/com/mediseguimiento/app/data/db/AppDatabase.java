@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.mediseguimiento.app.data.db.dao.CitaDao;
@@ -27,10 +28,21 @@ import com.mediseguimiento.app.data.db.entity.Recordatorio;
  */
 @Database(entities = {Paciente.class, Cita.class, PreparacionConsulta.class,
         Estudio.class, Recordatorio.class, Consentimiento.class},
-        version = 1, exportSchema = false)
+        version = 2, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static final String NOMBRE = "mediseguimiento.db";
+
+    /**
+     * Versión 2: agrega la duración de las citas. La migración conserva todos los datos
+     * existentes; las citas anteriores quedan con 30 minutos.
+     */
+    public static final Migration MIGRACION_1_2 = new Migration(1, 2) {
+        @Override
+        public void migrate(@NonNull SupportSQLiteDatabase db) {
+            db.execSQL("ALTER TABLE citas ADD COLUMN duracion_min INTEGER NOT NULL DEFAULT 30");
+        }
+    };
     private static volatile AppDatabase instancia;
 
     public abstract PacienteDao pacienteDao();
@@ -50,6 +62,7 @@ public abstract class AppDatabase extends RoomDatabase {
                                     AppDatabase.class, NOMBRE)
                             // WAL permite lecturas concurrentes mientras otro hilo escribe.
                             .setJournalMode(JournalMode.WRITE_AHEAD_LOGGING)
+                            .addMigrations(MIGRACION_1_2)
                             .addCallback(new Callback() {
                                 @Override
                                 public void onOpen(@NonNull SupportSQLiteDatabase db) {

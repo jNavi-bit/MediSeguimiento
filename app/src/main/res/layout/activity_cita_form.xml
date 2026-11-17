@@ -239,6 +239,32 @@
                 </LinearLayout>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space_xs"
+                    android:layout_marginTop="@dimen/space_m"
+                    android:text="@string/campo_duracion"
+                    android:textAppearance="@style/TextAppearance.Medi.BodySmall"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/grupo_duracion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_xs"
+                    app:chipSpacingHorizontal="8dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip android:id="@+id/dur_15" style="@style/Widget.Medi.Chip.Filtro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="15 min" />
+                    <com.google.android.material.chip.Chip android:id="@+id/dur_30" style="@style/Widget.Medi.Chip.Filtro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="30 min" />
+                    <com.google.android.material.chip.Chip android:id="@+id/dur_45" style="@style/Widget.Medi.Chip.Filtro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="45 min" />
+                    <com.google.android.material.chip.Chip android:id="@+id/dur_60" style="@style/Widget.Medi.Chip.Filtro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 h" />
+                    <com.google.android.material.chip.Chip android:id="@+id/dur_90" style="@style/Widget.Medi.Chip.Filtro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 h 30 min" />
+                    <com.google.android.material.chip.Chip android:id="@+id/dur_120" style="@style/Widget.Medi.Chip.Filtro" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 h" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <TextView
                     android:id="@+id/error_fecha"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
