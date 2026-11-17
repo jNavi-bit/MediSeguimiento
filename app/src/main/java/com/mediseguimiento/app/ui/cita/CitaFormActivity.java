@@ -170,6 +170,15 @@ public class CitaFormActivity extends AppCompatActivity {
             LocalTime siguiente = LocalTime.now(Fechas.zona()).plusHours(1).withMinute(0).withSecond(0).withNano(0);
             if (siguiente.isAfter(vm.hora)) vm.hora = siguiente;
         }
+        // Aviso por defecto: la mayor anticipación que todavía quede en el futuro.
+        long cita = Fechas.aMillis(vm.fecha, vm.hora), ahora = System.currentTimeMillis();
+        vm.recordatorioMin = Cita.RECORDATORIO_NINGUNO;
+        for (int min : new int[]{24 * 60, 60, 15}) {
+            if (com.mediseguimiento.app.core.recordatorios.Recordatorios.disparo(cita, min) > ahora) {
+                vm.recordatorioMin = min;
+                break;
+            }
+        }
         vm.inicializado = true;
     }
 
